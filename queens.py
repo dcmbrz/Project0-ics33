@@ -71,7 +71,7 @@ class QueensState:
 
     def queen_count(self) -> int:
         """Returns the number of queens on the chessboard."""
-        return 0
+        pass
 
 
     def queens(self) -> list[Position]:
