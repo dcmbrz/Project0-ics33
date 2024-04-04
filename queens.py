@@ -81,7 +81,7 @@ class QueensState:
                     count += 1
         return count
 
-    def queens(self, rows=None, columns=None) -> list[Position]:
+    def queens(self) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
         pass
