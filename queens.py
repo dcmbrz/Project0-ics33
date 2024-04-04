@@ -73,7 +73,6 @@ class QueensState:
         """Returns the number of queens on the chessboard."""
         return 0
 
-
     def queens(self) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
