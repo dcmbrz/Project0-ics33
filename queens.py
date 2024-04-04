@@ -68,36 +68,32 @@ class QueensState:
         with no queens occupying any of its cells."""
         self.rows = rows
         self.columns = columns
-        self.chessboard = [['8' for i in range(rows)] for j in range(columns)]
-        for row in self.chessboard:
-            print(' '.join(row))
-
-
+        self.board = [[0 for i in range(columns)] for j in range(rows)]
+        print(self.board)
 
 
     def queen_count(self) -> int:
         """Returns the number of queens on the chessboard."""
-        count= 0
-        for self.rows in self.chessboard:
-            if self.rows != ['x']:
-                count += 1
+        count = 0
+        for board in self.board:
+            for space in board:
+                if space != 0:
+                    count += 1
         return count
 
-
-    def queens(self, rows= None, columns= None) -> list[Position]:
+    def queens(self, rows=None, columns=None) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
-        '''position = []
+        position = []
 
-        if rows:
+        if rows is None:
             rows = self.rows
-        if columns:
+        if columns is None:
             columns = self.columns
-        for row in rows:
-            for column in columns:
+        for row in range(rows):
+            for column in range(columns):
                 position.append(Position(row, column))
-        return position'''
-        pass
+        return position
 
 
     def has_queen(self, position: Position) -> bool:
