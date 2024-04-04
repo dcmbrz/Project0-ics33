@@ -30,9 +30,9 @@ class TestQueensState(unittest.TestCase):
         state = QueensState(8,8)
         self.assertEqual(state.board,[[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]])
 
-    def test_board_is_not_equal_initially(self): #don't want to pass(doesn't pass)
+    """def test_board_is_not_equal_initially(self): #don't want to pass(doesn't pass)
         state = QueensState(8,8)
-        self.assertEqual(state.board,[[0 for i in range(state.columns - 2)] for j in range(state.rows - 4 )])
+        self.assertEqual(state.board,[[0 for i in range(state.columns - 2)] for j in range(state.rows - 4 )])"""
 
 
 
