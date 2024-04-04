@@ -93,6 +93,7 @@ class QueensState:
         for row in range(rows):
             for column in range(columns):
                 position.append(Position(row, column))
+        print("p:",position)
         return position
 
 

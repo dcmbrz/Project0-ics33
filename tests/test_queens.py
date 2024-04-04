@@ -17,20 +17,21 @@ import unittest
 
 
 class TestQueensState(unittest.TestCase):
-    def test_queen_count_is_zero_initially(self):
+    def test_queen_count_is_zero_initially(self): #want to pass (passed)
         state = QueensState(8, 8)
         self.assertEqual(state.queen_count(), 0)
 
     def test_queen_count_is_one_initially(self):
         state = QueensState(8,8)
-        self.assertEqual(state.queen_count(), 1)
+        self.assertEqual(state.queen_count(),1) #don't want to pass(doesn't pass)
 
-    def test_board_is_equal_initially(self):
+    def test_board_is_equal_initially(self): #want to pass (passed)
         state = QueensState(8,8)
-        self.assertEqual(state.board(),[[0 for i in range(state.columns)] for j in range(state.rows)])
-    def test_board_is_not_equal_initially(self):
+        self.assertEqual(state.board,[[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]])
+
+    def test_board_is_not_equal_initially(self): #don't want to pass(doesn't pass)
         state = QueensState(8,8)
-        self.assertEqual(state.board(),[[0 for i in range(state.columns - 2)] for j in range(state.rows - 4 )])
+        self.assertEqual(state.board,[[0 for i in range(state.columns - 2)] for j in range(state.rows - 4 )])
 
     '''def test_queens_position(self):
         state = QueensState(8, 8)
