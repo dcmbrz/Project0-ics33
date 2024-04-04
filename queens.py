@@ -70,6 +70,8 @@ class QueensState:
                       for j in range(columns)]
         for row in chessboard:
             print(' '.join(row))
+        self.rows = rows
+        self.columns = columns
 
 
 
@@ -77,10 +79,16 @@ class QueensState:
         """Returns the number of queens on the chessboard."""
         return 0
 
-    def queens(self) -> list[Position]:
+    def queens(self, rows= None, columns= None) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
-        pass
+        position= []
+
+        if rows:
+            rows= self.rows
+        if columns:
+            columns= self.columns
+
 
 
     def has_queen(self, position: Position) -> bool:
