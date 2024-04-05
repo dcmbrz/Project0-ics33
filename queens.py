@@ -88,15 +88,16 @@ class QueensState:
         for row in range(len(self.board)):
             for col in range(len(self.board[row])):
                 if self.board[row][col] != 0:
-                    positions.append(self.board[row][col])
+                    coordinate= Position(row, col)
+                    positions.append(coordinate)
         return positions
-
 
 
     def has_queen(self, position: Position) -> bool:
         """Returns True if a queen occupies the given position on the chessboard, or
         False otherwise."""
-        pass
+        if self.board[position.row][position.column] != 0:
+            return True
 
 
     def any_queens_unsafe(self) -> bool:
