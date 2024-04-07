@@ -69,7 +69,101 @@ class TestQueensState(unittest.TestCase):
                         [0, 0, 0, 0, 0, 0, 0, 0]])
         self.assertEqual(True, state.has_queen(Position(0,3)))
 
+    def test_if_the_queen_is_in_danger_vertically_true(self):
+        state = QueensState(8,8)
+        state.board = ([[0, 0, 0, 1, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 1, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_vertically_true_part2(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_vertically_true_part3(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_horizontally_true(self):
+        state = QueensState(8, 8)
+        state.board = ([[1, 0, 0, 0, 0, 1, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_horizontally_true_part2(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 1, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_horizontally_true_part3(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 1, 0, 0, 0, 0]])
+        self.assertEqual(True, state.any_queens_unsafe())
 
 
+    def test_if_the_queen_is_in_danger_horizontally_false(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(False, state.any_queens_unsafe())
+
+    def test_if_the_queen_is_in_danger_vertically_false(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(False, state.any_queens_unsafe())
 if __name__ == '__main__':
     unittest.main()

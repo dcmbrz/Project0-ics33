@@ -103,7 +103,30 @@ class QueensState:
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
         be captured by at least one other queen on the chessboard), or False otherwise."""
-        pass
+        #checking if there are two queens on the same vetically
+        for col in range(self.columns):
+            queen_count= 0 #this counter resets when we enter a new column
+            for row in range(self.rows):
+                if self.board[row][col] == 1:
+                    queen_count += 1
+                if queen_count >= 2:
+                    return True
+
+        #checking if there are two queens on the same horizontally
+        for row in range(len(self.board)):
+            queen_count= 0 #this counter resets when we enter a new row
+            for col in range(len(self.board[row])):
+                if self.board[row][col] == 1:
+                    queen_count += 1
+                    if queen_count >= 2:
+                        return True
+
+
+
+        return False
+        # checking if there are two queens on the same sideways
+
+
 
 
     def with_queens_added(self, positions: list[Position]) -> Self:
