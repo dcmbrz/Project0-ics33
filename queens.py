@@ -104,6 +104,8 @@ class QueensState:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
         be captured by at least one other queen on the chessboard), or False otherwise."""
         #checking if there are two queens on the same vetically
+        board_length= len(self.board)
+        diagonal_sum= 0
         for col in range(self.columns):
             queen_count= 0 #this counter resets when we enter a new column
             for row in range(self.rows):
@@ -120,6 +122,25 @@ class QueensState:
                     queen_count += 1
                     if queen_count >= 2:
                         return True
+
+        #check diagonally, starting from the top right corner and go down to the bottom left
+        for j in range(board_length):
+            for i in range(j+1):
+                diagonal_sum += self.board[i][board_length - j + i - 1]
+            if board_length % 2 == 1:
+                diagonal_sum -= self.board[board_length // 2][board_length // 2]
+        if diagonal_sum >= 2:
+            return True
+
+        # check diagonally, starting from the bottom left corner and moving towards the upper right corner.
+        for j in range(board_length):
+            for i in range(board_length - j):
+                diagonal_sum += self.board[i+j][i]
+            if board_length % 2 == 1:
+                diagonal_sum -= self.board[board_length // 2][board_length // 2]
+        if diagonal_sum >= 2:
+            return True
+
 
 
 
