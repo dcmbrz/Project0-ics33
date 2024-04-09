@@ -127,7 +127,6 @@ class QueensState:
         for j in range(board_length):
             for i in range(j+1):
                 diagonal_sum += self.board[i][board_length - j + i - 1]
-            if board_length % 2 == 1:
                 diagonal_sum -= self.board[board_length // 2][board_length // 2]
         if diagonal_sum >= 2:
             return True
@@ -136,17 +135,12 @@ class QueensState:
         for j in range(board_length):
             for i in range(board_length - j):
                 diagonal_sum += self.board[i+j][i]
-            if board_length % 2 == 1:
                 diagonal_sum -= self.board[board_length // 2][board_length // 2]
         if diagonal_sum >= 2:
             return True
 
 
-
-
         return False
-        # checking if there are two queens on the same sideways
-
 
 
 
@@ -154,11 +148,29 @@ class QueensState:
         """Builds a new QueensState with queens added in the given positions,
         without modifying 'self' in any way.  Raises a DuplicateQueenError when
         there is already a queen in at least one of the given positions."""
-        pass
+        queen= QueensState(self.rows, self.columns)
+        new_board = [row[:] for row in self.board]
+        for pos in positions:
+            if new_board[pos.row][pos.column] != 0:
+                raise DuplicateQueenError(pos)
+            else:
+                new_board[pos.row][pos.column] = 1
+        queen.board = new_board
+        return queen
+
+
 
 
     def with_queens_removed(self, positions: list[Position]) -> Self:
         """Builds a new QueensState with queens removed from the given positions,
         without modifying 'self' in any way.  Raises a MissingQueenError when there
         is no queen in at least one of the given positions."""
-        pass
+        queen = QueensState(self.rows, self.columns)
+        new_board = [row[:] for row in self.board]
+        for pos in positions:
+            if new_board[pos.row][pos.column] == 0:
+                raise MissingQueenError(pos)
+            else:
+                new_board[pos.row][pos.column] = 0
+        queen.board = new_board
+        return queen

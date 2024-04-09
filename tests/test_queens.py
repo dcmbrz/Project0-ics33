@@ -14,6 +14,7 @@
 from queens import QueensState
 import unittest
 from queens import Position
+from queens import DuplicateQueenError
 
 
 
@@ -250,5 +251,100 @@ class TestQueensState(unittest.TestCase):
                         [0, 0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0, 0]])
         self.assertEqual(True, state.any_queens_unsafe())
+
+
+    def test_queens_Duplicate(self):
+        state= QueensState(8,8)
+        state.board = ([[0, 0, 0, 1, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        with self.assertRaises(Exception) as context:
+            state.with_queens_added([Position(0,3), Position(0,3)])
+        self.assertEqual(str(context.exception), 'duplicate queen in row 0 column 3')
+    def test_queens_Duplicate_pt2(self):
+        state= QueensState(8,8)
+        originalboard = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 0]])
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+
+        board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                  [1, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 0, 0]])
+        new_state = state.with_queens_added([Position(1, 0)])
+        self.assertEqual(board, new_state.board)
+        self.assertEqual(originalboard, state.board)
+
+
+
+    def test_if_queens_missing(self):
+        state = QueensState(8, 8)
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        with self.assertRaises(Exception) as context:
+            state.with_queens_removed([Position(0,3)])
+        self.assertEqual(str(context.exception), 'missing queen in row 0 column 3')
+
+    def test_if_queens_missing_pt2(self):
+        state = QueensState(8, 8)
+        originalboard = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        state.board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+
+        board = ([[0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0]])
+        new_state = state.with_queens_removed([Position(1,0)])
+        self.assertEqual(board, new_state.board)
+        self.assertEqual(originalboard, state.board)
+
+
+
 if __name__ == '__main__':
     unittest.main()
